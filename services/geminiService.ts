@@ -57,6 +57,6 @@ export const generateProfessionalImage = async (
 
   } catch (error) {
     console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to generate the image. The AI may have refused the request due to safety settings. Please try a different photo.");
+    throw new Error("Failed to generate the image. This could be due to a network issue or safety settings. Please try again with a different photo.");
   }
 };
