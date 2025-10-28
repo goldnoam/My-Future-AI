@@ -1,0 +1,7 @@
+{
+  "name": "Future Me AI",
+  "description": "See what you'll look like in your future profession! This app uses your camera to take a photo and AI to transform your background into a professional setting of your choice.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
