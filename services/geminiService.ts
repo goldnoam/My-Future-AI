@@ -2,16 +2,17 @@ import { GoogleGenAI, Modality } from "@google/genai";
 import type { Profession } from '../types';
 
 const getProfessionPrompt = (profession: Profession): string => {
-  return `You are an expert, professional photo editor. Your task is to take the provided image of a person and transform it to look like they are a ${profession}.
+  return `You are an expert, professional photo editor. Your task is to take the provided image, which may contain one or more people, and transform it to look like everyone in the image has the profession of a ${profession}.
 
 Key requirements:
-1.  **Face Integrity**: Do NOT alter the person's face, facial expression, or head. The person's head should look exactly as it does in the original photo.
-2.  **Clothing Transformation**: Change the person's clothing to a realistic, professional uniform or attire suitable for a ${profession}.
-3.  **Seamless Integration**: The person's head and new clothing must be perfectly integrated into a new background. Pay close attention to edges, lighting, and shadows to make it look natural.
-4.  **Background Context**: The background must be instantly recognizable and appropriate for a ${profession}. For example, for a 'Scientist', a modern laboratory; for a 'Doctor', a hospital room.
-5.  **High Quality**: The final image must be of high resolution and quality, free of artifacts.
+1.  **Face Integrity**: Do NOT alter the faces, facial expressions, or heads of any person in the image. The heads of all people should look exactly as they do in the original photo.
+2.  **Clothing Transformation**: Change the clothing of **every person** in the image to a realistic, professional uniform or attire suitable for the ${profession} profession.
+3.  **Seamless Integration**: Each person's head and new clothing must be perfectly integrated into a new, single, coherent background. Pay close attention to edges, lighting, and shadows to make it look natural.
+4.  **Background Context**: The background must be instantly recognizable and appropriate for the ${profession} profession. For example, for a 'Scientist', a modern laboratory; for a 'Doctor', a hospital room.
+5.  **Group Composition**: Maintain the original positions and poses of the people as much as possible.
+6.  **High Quality**: The final image must be of high resolution and quality, free of artifacts.
 
-Do not add any text, watermarks, or other elements to the image. Just replace the background and change the clothes.`;
+Do not add any text, watermarks, or other elements to the image. Just replace the background and change the clothes for everyone in the picture.`;
 };
 
 export const generateProfessionalImage = async (
